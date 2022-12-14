@@ -1,6 +1,8 @@
-import yt from 'yt-converter'
+const yt = require('yt-converter')
 
-export function getmp3(title, url) {
+module.exports = {}
+
+module.exports.getmp3 = function(title, url) {
   yt.convertvideo({
     url: url,
     itag: 140,
@@ -9,7 +11,7 @@ export function getmp3(title, url) {
   })
 }
 
-export function getmp4(title, url) {
+module.exports.getmp4 = function (title, url) {
   yt.convertvideo({
     url: url,
     itag: 136,
@@ -18,7 +20,7 @@ export function getmp4(title, url) {
   })
 }
 
-export async function getTitle(url) {
+module.exports.getTitle = async function(url) {
   let title
   await yt.getInfo(url).then((info) => {
     title = info.title
